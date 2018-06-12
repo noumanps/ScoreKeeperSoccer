@@ -27,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
     //Team B penaltiy Goals
     int penaltyGoalsTeamB = 0;
 
+    //Team A Total Goals
     int totalGoalsTeamA = 0;
 
+    //Team B Total Goals
     int totalGoalsTeamB = 0;
 
     @Override
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             goalsTeamA = goalsTeamA + 1;
             TotalTeamAGoals();
         } else {
-            Toast.makeText(getApplicationContext(), "Match Not Started Yet!!", Toast.LENGTH_LONG).show();
+            displayToast();
         }
     }
 
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             penaltyGoalsTeamA = penaltyGoalsTeamA + 1;
             TotalTeamAGoals();
         } else {
-            Toast.makeText(getApplicationContext(), "Match Not Started Yet!!", Toast.LENGTH_LONG).show();
+            displayToast();
         }
     }
 
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             goalsTeamB = goalsTeamB + 1;
             TotalTeamBGoals();
         } else {
-            Toast.makeText(getApplicationContext(), "Match Not Started Yet!!", Toast.LENGTH_LONG).show();
+            displayToast();
         }
     }
 
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             penaltyGoalsTeamB = penaltyGoalsTeamB + 1;
             TotalTeamBGoals();
         } else {
-            Toast.makeText(getApplicationContext(), "Match Not Started Yet!!", Toast.LENGTH_LONG).show();
+            displayToast();
         }
     }
 
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         if (matchStarted == true) {
             resultDisplay();
         } else {
-            Toast.makeText(getApplicationContext(), "Match Not Started Yet!!", Toast.LENGTH_LONG).show();
+            displayToast();
         }
     }
 
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         if (matchStarted == true) {
             scoreCardDisplay();
         } else {
-            Toast.makeText(getApplicationContext(), "Match Not Started Yet!!", Toast.LENGTH_LONG).show();
+            displayToast();
         }
     }
 
@@ -125,37 +127,42 @@ public class MainActivity extends AppCompatActivity {
         TotalTeamAGoals();
         TotalTeamBGoals();
 
-        TextView scoreCardForA = (TextView) findViewById(R.id.scoreCardTeamA);
+        TextView scoreCardForA = findViewById(R.id.scoreCardTeamA);
         scoreCardForA.setText("");
 
-        TextView scoreCardForB = (TextView) findViewById(R.id.scoreCardTeamB);
+        TextView scoreCardForB = findViewById(R.id.scoreCardTeamB);
         scoreCardForB.setText("");
 
-        TextView displayView = (TextView) findViewById(R.id.display_text);
+        TextView displayView = findViewById(R.id.display_text);
         displayView.setText("");
     }
 
     //Display the number of goals for Team A on screen
     public void displayForTeamA(int goal) {
-        TextView goalView = (TextView) findViewById(R.id.team_a_goal);
+        TextView goalView = findViewById(R.id.team_a_goal);
         goalView.setText(String.valueOf(goal));
     }
 
     //Display the number of goals for Team B on screen
     public void displayForTeamB(int goal) {
-        TextView goalView = (TextView) findViewById(R.id.team_b_goal);
+        TextView goalView = findViewById(R.id.team_b_goal);
         goalView.setText(String.valueOf(goal));
+    }
+
+    //Display Toast message
+    public void displayToast() {
+        Toast.makeText(getApplicationContext(), "Match Not Started Yet!!", Toast.LENGTH_LONG).show();
     }
 
     //Display game's result
     public void resultDisplay() {
 
-        TextView scoreCardForA = (TextView) findViewById(R.id.scoreCardTeamA);
-        TextView scoreCardForB = (TextView) findViewById(R.id.scoreCardTeamB);
+        TextView scoreCardForA = findViewById(R.id.scoreCardTeamA);
+        TextView scoreCardForB = findViewById(R.id.scoreCardTeamB);
         scoreCardForA.setText("");
         scoreCardForB.setText("");
 
-        TextView displayView = (TextView) findViewById(R.id.display_text);
+        TextView displayView = findViewById(R.id.display_text);
 
         if (totalGoalsTeamA > totalGoalsTeamB) {
             displayView.setText("Team A Won!!");
@@ -169,11 +176,11 @@ public class MainActivity extends AppCompatActivity {
     //Display Both Teams Score Cards
     public void scoreCardDisplay() {
 
-        TextView displayView = (TextView) findViewById(R.id.display_text);
+        TextView displayView = findViewById(R.id.display_text);
         displayView.setText("");
 
-        TextView scoreCardForA = (TextView) findViewById(R.id.scoreCardTeamA);
-        TextView scoreCardForB = (TextView) findViewById(R.id.scoreCardTeamB);
+        TextView scoreCardForA = findViewById(R.id.scoreCardTeamA);
+        TextView scoreCardForB = findViewById(R.id.scoreCardTeamB);
 
         scoreCardForA.setText("Team A \n" +
                 "Total Number of Goals: " + totalGoalsTeamA + "\n" +
